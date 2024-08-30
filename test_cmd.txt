@@ -1,0 +1,5 @@
+python run_llava.py --model-path /home/avnish/LLaVA/checkpoints/llava-v1.5-13b-task-lora
+--model-base /home/avnish/LLaVA/llava-v1.5-7b
+--image-file /home/avnish/Downloads/10499039/VQAMed2019Test/VQAMed2019Test/VQAMed2019_Test_Images/synpic58343.jpg
+--query “what imaging modality was used to take this image?”
+

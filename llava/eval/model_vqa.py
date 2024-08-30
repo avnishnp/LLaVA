@@ -14,6 +14,7 @@ from llava.mm_utils import tokenizer_image_token, process_images, get_model_name
 from PIL import Image
 import math
 
+print(torch.cuda.is_available())
 
 def split_list(lst, n):
     """Split a list into n (roughly) equal-sized chunks"""
@@ -39,9 +40,9 @@ def eval_model(args):
     os.makedirs(os.path.dirname(answers_file), exist_ok=True)
     ans_file = open(answers_file, "w")
     for line in tqdm(questions):
-        idx = line["question_id"]
+        idx = line["id"]
         image_file = line["image"]
-        qs = line["text"]
+        qs = line["conversations"][0]["value"]
         cur_prompt = qs
         if model.config.mm_use_im_start_end:
             qs = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + qs
